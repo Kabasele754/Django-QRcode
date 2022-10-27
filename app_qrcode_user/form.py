@@ -50,7 +50,7 @@ class CustomerUserForm(FormSettings):
 
     class Meta:
         model = CustomerUser
-        fields = ['nom', 'postnom', 'email', 'genre','profile_image',]
+        fields = ['name','email','profile_image',]
 
 
 class ClientUserForm(CustomerUserForm):

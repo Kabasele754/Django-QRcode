@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # add my user qrcode
     'app_qrcode_user.apps.AppQrcodeUserConfig',
+    'app_qrcode.apps.AppQrcodeConfig',
 ]
 
 MIDDLEWARE = [

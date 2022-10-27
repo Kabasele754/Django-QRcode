@@ -1,0 +1,30 @@
+<form role="form" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="row">
+        {% for field in form  %}
+            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
+            {{field.errors}}
+                {% if not labels_uppercase %}{{ field.label|safe }}{% else %}{{ field.label|safe|upper }}{% endif %}{% if field.field.required %}{% endif %}
+
+<!--                {{field.label_tag}}-->
+                {{field}}
+
+                </div>
+
+        {% endfor %}
+        </div>
+
+
+    <!-- /.card-body -->
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-block">
+            {% if button_text %}
+            {{button_text}}
+            {% else %}
+            Submit
+            {% endif %}
+
+        </button>
+    </div>
+</form>
