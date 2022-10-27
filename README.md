@@ -2,7 +2,7 @@
 
 ## Resultat
 
-<img src="QR code.PNG" width="150" height="100">
+<img src="QR code.PNG" >
 
 # Install package 
 
