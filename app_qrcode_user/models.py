@@ -33,8 +33,7 @@ class CustomerUser(AbstractUser):
     GENDER = [("M", "Masculin"), ("F", "Feminin")]
 
     username = None  # Removed username, using email instead
-    nom = models.CharField(max_length=20)
-    postnom = models.CharField(max_length=20)
+    name = models.CharField(max_length=20)
     email = models.EmailField(
         verbose_name='email address',
         max_length=255,
