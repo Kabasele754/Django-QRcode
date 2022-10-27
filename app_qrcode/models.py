@@ -1,3 +1,4 @@
+from turtle import fillcolor
 from django.db import models
 import qrcode
 from io import BytesIO
@@ -18,22 +19,34 @@ class MyQrCode(models.Model):
     
     def save(self,*args, **kwargs):
         qrcode_image = qrcode.make(self.name)
+        # get my image 
         im = Image.open(self.image)
         im = im.convert("RGBA")
         logo = Image.open(self.image)
+        # Size image
+        base_with = 75
+        wpercent = (base_with / float(logo.size[0]))
+        hsize = int((float(logo.size[1])* float(wpercent)))
+        logo = logo.resize((base_with, hsize), Image.ANTIALIAS)
+        qr_big = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_H, box_size=10, border=4)
+        # Add my name
+        qr_big.add_data(self.name)
+        qr_big.make(fit=True)
+        
+        img_qr_big = qr_big.make_image(fill_color="black", back_color = "white").convert("RGB")
+        # update the position image
+        pos = ((img_qr_big.size[0]- logo.size[0])//2,(img_qr_big.size[1]- logo.size[1])//2)
         canvas = Image.new('RGB', (290,290),'white')
-        #draw = ImageDraw(canvas)
-        region = logo
-        box = (135,135,235,235)
-        region = region.resize((box[2] - box[0], box[3] - box[1]))
-        im.crop(box)
-        canvas.paste(qrcode_image)
-        canvas.paste(region)
+        
+       
+        img_qr_big.paste(logo, pos)
+        canvas.paste(img_qr_big)
+        
         fname = f'qr_code-{self.name}.png'
         buffer = BytesIO()
         
-        im.paste(region,box)
-        #im.show()
+        
+        # save the image in variable qr_code
         
         canvas.save(buffer,'PNG')
         self.qr_code.save(fname, File(buffer), save=False)
