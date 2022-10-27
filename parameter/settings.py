@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # add my user qrcode
-    'app_qrcode_user.apps.AppQrcodeUserConfig',
+    #'app_qrcode_user.apps.AppQrcodeUserConfig',
     'app_qrcode.apps.AppQrcodeConfig',
 ]
 
@@ -123,8 +123,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR / "staticfiles")
 MEDIA_ROOT = os.path.join(BASE_DIR/ 'media')
 
-AUTH_USER_MODEL = 'app_qrcode_user.CustomerUser'
-ADMIN_MEDIA_PREFIX = '/media/'
+#AUTH_USER_MODEL = 'app_qrcode_user.CustomerUser'
+#ADMIN_MEDIA_PREFIX = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
