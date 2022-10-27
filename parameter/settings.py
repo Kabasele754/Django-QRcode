@@ -120,8 +120,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR / "staticfiles")
+MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(BASE_DIR/ 'staticfiles')
+# add this code for to search file css
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),)
 MEDIA_ROOT = os.path.join(BASE_DIR/ 'media')
+#AUTH_USER_MODEL = 'app_qrcode_user.CustomerUser'
+#AUTHENTICATION_BACKENDS = ['app_qrcode_user.EmailBackend.EmailBackend']
 
 #AUTH_USER_MODEL = 'app_qrcode_user.CustomerUser'
 #ADMIN_MEDIA_PREFIX = '/media/'

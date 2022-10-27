@@ -70,5 +70,5 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=CustomerUser)
 def save_user_profile(sender, instance, **kwargs):
     if instance.user_type == 1:
-        instance.admin.save()
+        instance.clientuser.save()
    
